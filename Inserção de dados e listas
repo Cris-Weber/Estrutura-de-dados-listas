@@ -1,0 +1,143 @@
+#O programa deve produzir uma lista igual a [[], [1], [2], [3], [1,2],[1,3],[2,3],[1,2,3]].
+#O usuário deve inserir as notas e o programa criará as listas
+
+#Definição das listas
+Port = []
+Hist = []
+Mat = []
+
+def inserirNotas(label, qtdeNotas, array):
+    print('Insira as notas de ' + label + ': ')
+    for i in range(qtdeNotas):
+      nota = eval(input('Nota ' + str(i + 1) + ': '))
+      array.append(nota)
+
+def printNotas(array, label):
+    print(('Notas de ' + label), array)
+    minima = min(array);
+    maxima = max(array);
+    media = sum(array) / len(array)
+    print('Nota minima:', minima)
+    print('Nota maxima:', maxima)
+    print('Nota media: ', media)
+    if media >= 7:
+        print('Voce esta aprovado em ' + label)
+    else:
+        print('Voce esta reprovado em ' + label)
+
+#Definição do agrupamento das listas
+
+def unir(arr1, arr2):
+    return sorted(arr1 + arr2)
+
+def unirSemRepeticao(arr1, arr2):
+    return sorted(set(arr1) | set(arr2))
+
+def unir3(arr1, arr2, arr3):
+    return sorted(arr1 + arr2 + arr3)
+
+def unirSemRepeticao3(arr1, arr2, arr3):
+    return sorted(set(arr1) | set(arr2) | set(arr3))
+
+#inclusão das notas
+
+print('------Lista de notas------')
+print('Insira valores de 0 a 10, sem ponto e virgula.')
+nome=(input('Insira o nome do aluno: '))
+
+print('\n')
+inserirNotas('português', 3, Port)
+print('\n')
+inserirNotas('matemática', 3, Mat)
+
+print('\n')
+inserirNotas('história', 3, Hist)
+
+#impressão das informações
+
+print('\n')
+printNotas(Port, 'português')
+print('\n')
+printNotas(Mat, 'matemática')
+print('\n')
+printNotas(Hist, 'história')
+
+print('\n')
+print('União notas de Português e Matemática',(unir(Port,Mat)))
+print('União notas de Português e Matemática sem repetições:',(unirSemRepeticao(Port,Mat)))
+
+print('\n')
+print('União notas de Português e História',(unir(Port,Hist)))
+print('União notas de Português e História sem repetições:',(unirSemRepeticao(Port,Hist)))
+
+print('\n')
+print('União notas de Matemática e História',(unir(Mat,Hist)))
+print('União notas de Matemática  e HIstória sem repetições:',(unirSemRepeticao(Mat,Hist)))
+
+print('\n')
+print('União notas de Português, Matemática e História',(unir3(Port,Mat,Hist)))
+print('União notas de Português, Matemática e HIstória sem repetições:',(unirSemRepeticao3(Port,Mat,Hist)))
+
+
+
+
+#RESULTADO
+
+------Lista de notas------
+Insira valores de 0 a 10, sem ponto e virgula.
+Insira o nome do aluno: Cristiane Weber
+
+
+Insira as notas de português: 
+Nota 1: 5
+Nota 2: 8
+Nota 3: 9
+
+
+Insira as notas de matemática: 
+Nota 1: 7
+Nota 2: 6
+Nota 3: 9
+
+
+Insira as notas de história: 
+Nota 1: 5
+Nota 2: 4
+Nota 3: 9
+
+
+Notas de português [5, 8, 9]
+Nota minima: 5
+Nota maxima: 9
+Nota media:  7.333333333333333
+Voce esta aprovado em português
+
+
+Notas de matemática [7, 6, 9]
+Nota minima: 6
+Nota maxima: 9
+Nota media:  7.333333333333333
+Voce esta aprovado em matemática
+
+
+Notas de história [5, 4, 9]
+Nota minima: 4
+Nota maxima: 9
+Nota media:  6.0
+Voce esta reprovado em história
+
+
+União notas de Português e Matemática [5, 6, 7, 8, 9, 9]
+União notas de Português e Matemática sem repetições: [5, 6, 7, 8, 9]
+
+
+União notas de Português e História [4, 5, 5, 8, 9, 9]
+União notas de Português e História sem repetições: [4, 5, 8, 9]
+
+
+União notas de Matemática e História [4, 5, 6, 7, 9, 9]
+União notas de Matemática  e HIstória sem repetições: [4, 5, 6, 7, 9]
+
+
+União notas de Português, Matemática e História [4, 5, 5, 6, 7, 8, 9, 9, 9]
+União notas de Português, Matemática e HIstória sem repetições: [4, 5, 6, 7, 8, 9]
